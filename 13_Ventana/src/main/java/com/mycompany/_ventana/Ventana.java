@@ -23,6 +23,7 @@ public class Ventana {
         
         //hay que definir el tamaño de la ventana
         ventana.setSize(400, 150);
+        ventana.setLocationRelativeTo(null); 
         //definir sus acciones de la ventana
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
