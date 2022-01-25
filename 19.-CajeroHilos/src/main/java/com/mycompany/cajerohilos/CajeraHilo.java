@@ -9,17 +9,23 @@ package com.mycompany.cajerohilos;
  * @author crami
  */
 
-//objeto el cual debe de tener: nombre, procesocompra, esperarXsegundos
 
 
 
-
-public class Cajera {
+public class CajeraHilo extends Thread {
     
     private String nombre;
+    private Cliente cliente;
+    private long initialTime;
     
-    public Cajera(){
-    
+    public CajeraHilo(){
+    }
+
+    public CajeraHilo(String nombre, Cliente cliente, long initialTime) {
+        super();
+        this.nombre = nombre;
+        this.cliente = cliente;
+        this.initialTime = initialTime;
     }
 
     public String getNombre() {
@@ -29,12 +35,30 @@ public class Cajera {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public long getInitialTime() {
+        return initialTime;
+    }
+
+    public void setInitialTime(long initialTime) {
+        this.initialTime = initialTime;
+    }
     
-    public void procesarCompra(Cliente cliente, long timeStamp){
-        System.out.println("La cajera : " +this.nombre 
+    //el metodo para correr el hilo
+    @Override
+    public void run(){
+          System.out.println("La cajera : " +this.nombre 
                 + "Comienza a procesar su compra señor cliente: "
                 + cliente.getNombre() + "\n En el tiempo: "
-                + (System.currentTimeMillis() - timeStamp)/1000 + "segundos");
+                + (System.currentTimeMillis() - initialTime)/1000 + "segundos");
         //tenemos que obtener todos los productos del carrito
         
         //recorrer la cantidad de productos
@@ -44,23 +68,23 @@ public class Cajera {
             
             System.out.println("Procesando el producto: " + (i+1)
                                 + " -> Tiempo: " 
-                    + (System.currentTimeMillis() - timeStamp)/1000 + "segundos");
+                    + (System.currentTimeMillis() - initialTime)/1000 + "segundos");
             
             System.out.println("La cajera: " + this.nombre 
                     + "ha terminado de procesar" + cliente.getNombre() 
                     + "en el tiempo" 
-                    + (System.currentTimeMillis() - timeStamp)/1000 + "segundos");
+                    + (System.currentTimeMillis() - initialTime)/1000 + "segundos");
         }
-        
     }
-    
-    private void esperarXsegundos(int segundos){
+
+    private void esperarXsegundos(int segundos) {
         try{
             Thread.sleep(segundos*1000);
         }catch(InterruptedException ex){
             Thread.currentThread().interrupt();
-        
         }
     }
+    
+    
     
 }

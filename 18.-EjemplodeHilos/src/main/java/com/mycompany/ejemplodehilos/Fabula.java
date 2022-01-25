@@ -10,4 +10,14 @@ package com.mycompany.ejemplodehilos;
  */
 public class Fabula {
     
+    public static void main(String[] args){
+        
+        Tortuga tortugui = new Tortuga();
+        Liebre tony = new Liebre();
+        
+        //inicializar el hilo
+        tortugui.start();
+        tony.start();
+    }
+    
 }
