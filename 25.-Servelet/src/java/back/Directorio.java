@@ -3,12 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package back;
-
-/**
- *
- * @author crami
- */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author demon
+ * @author crami
  */
+
+
 public class Directorio extends HttpServlet {
 
     /**
